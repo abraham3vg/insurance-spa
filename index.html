@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-4 selection:bg-blue-100">
+
+<body
+    class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-4 selection:bg-blue-100">
 
     <!-- Tarjeta Principal (Formulario) -->
-    <main class="w-full max-w-lg glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-2xl border border-white/40">
-        
+    <main
+        class="w-full max-w-lg glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-2xl border border-white/40">
+
         <!-- Barra de Progreso -->
         <div class="w-full progress-container rounded-full h-2 mb-10">
-            <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out" style="width: 12%"></div>
+            <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
+                style="width: 12%"></div>
         </div>
 
         <form id="insurance-form" class="space-y-4">
-            
+
             <!-- STEP 1: Compañía -->
             <div id="step-1" class="step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Con quién tiene contratados sus seguros de decesos u hogar?</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Con quién
+                    tiene contratados sus seguros de decesos u hogar?</h2>
                 <div class="mb-5 max-w-sm mx-auto flex flex-col gap-5">
-                    <input type="text" id="compania_actual" name="compania_actual" class="input-custom w-full border border-gray-200 rounded-xl p-4 text-lg text-center focus:outline-none transition-all" placeholder="Escriba la compañía..." autofocus>
-                    
+                    <input type="text" id="compania_actual" name="compania_actual"
+                        class="input-custom w-full border border-gray-200 rounded-xl p-4 text-lg text-center focus:outline-none transition-all"
+                        placeholder="Escriba la compañía..." autofocus>
+
                     <div class="flex flex-col gap-3 mt-4">
-                        <label class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white/50">
-                            <input type="checkbox" id="no_seguro" name="estado_seguro" value="no_tengo" class="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <label
+                            class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white/50">
+                            <input type="checkbox" id="no_seguro" name="estado_seguro" value="no_tengo"
+                                class="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
                             <span class="text-gray-700 font-medium">No tengo seguro contratado</span>
                         </label>
-                        <label class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white/50">
-                            <input type="checkbox" id="soy_occident" name="estado_seguro" value="soy_occident" class="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <label
+                            class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white/50">
+                            <input type="checkbox" id="soy_occident" name="estado_seguro" value="soy_occident"
+                                class="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
                             <span class="text-gray-700 font-medium">Ya pertenezco a Occident</span>
                         </label>
                     </div>
@@ -40,123 +52,176 @@
 
             <!-- OCCIDENT BRANCH: Oportunidad -->
             <div id="step-occident" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900 text-center leading-tight">¡Esto es una oportunidad para ti!</h2>
-                <p class="text-gray-600 text-center mb-8 text-lg">Podemos ofrecerte descuentos muy atractivos en otras pólizas que no tengas contratadas con nosotros. ¿Quieres que te llamemos?</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900 text-center leading-tight">¡Esta es una
+                    oportunidad para ti!</h2>
+                <p class="text-gray-600 text-center mb-8 text-lg">Podemos ofrecerte descuentos muy atractivos en otras
+                    pólizas que no tengas contratadas con nosotros. ¿Quieres que te llamemos?</p>
                 <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="radio" name="llamar_occident" value="Si" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">Sí</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">
+                            Sí</div>
                     </label>
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="radio" name="llamar_occident" value="No" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">No</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">
+                            No</div>
                     </label>
                 </div>
             </div>
 
             <!-- OCCIDENT BRANCH: Teléfono -->
             <div id="step-occident-phone" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900 text-center leading-tight">Indique su número de teléfono</h2>
-                <p class="text-gray-600 text-center mb-8 text-lg">Un asesor de Occident te llamará muy pronto para contarte sobre estos descuentos.</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900 text-center leading-tight">Indique su
+                    número de teléfono</h2>
+                <p class="text-gray-600 text-center mb-8 text-lg">Un asesor de Occident te llamará muy pronto para
+                    contarte sobre estos descuentos.</p>
                 <div class="mb-5 max-w-sm mx-auto">
-                    <input type="tel" id="telefono_occident" name="telefono_occident" class="input-custom w-full border border-gray-200 rounded-xl p-4 text-xl text-center focus:outline-none transition-shadow" placeholder="Ej: 600 123 456">
+                    <input type="tel" id="telefono_occident" name="telefono_occident"
+                        class="input-custom w-full border border-gray-200 rounded-xl p-4 text-xl text-center focus:outline-none transition-shadow"
+                        placeholder="Ej: 600 123 456">
                 </div>
             </div>
 
             <!-- STEP 2: Edad -->
             <div id="step-2" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Qué edad tiene?</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Qué edad
+                    tiene?</h2>
                 <div class="mb-5 max-w-xs mx-auto">
-                    <input type="number" id="edad" name="edad" min="18" max="120" class="input-custom w-full border border-gray-200 rounded-xl p-4 text-2xl text-center focus:outline-none transition-shadow" placeholder="Ej: 45">
+                    <input type="number" id="edad" name="edad" min="18" max="120"
+                        class="input-custom w-full border border-gray-200 rounded-xl p-4 text-2xl text-center focus:outline-none transition-shadow"
+                        placeholder="Ej: 45">
                 </div>
             </div>
 
             <!-- STEP 3: Pago actual -->
             <div id="step-3" class="step hidden-step">
-                <h2 id="step-3-title" class="text-2xl sm:text-3xl font-semibold mb-4 text-gray-900 text-center leading-tight">Es usted muy joven para estar con esa compañía...</h2>
-                <p id="step-3-subtitle" class="text-gray-500 text-center mb-8 text-lg">¿Aproximadamente cuánto está pagando?</p>
+                <h2 id="step-3-title"
+                    class="text-2xl sm:text-3xl font-semibold mb-4 text-gray-900 text-center leading-tight">Es usted muy
+                    joven para estar con esa compañía...</h2>
+                <p id="step-3-subtitle" class="text-gray-500 text-center mb-8 text-lg">¿Aproximadamente cuánto está
+                    pagando?</p>
                 <div id="payment-input-container" class="mb-5 max-w-xs mx-auto relative">
-                    <span class="absolute inset-y-0 left-0 pl-6 flex items-center text-gray-400 font-medium text-2xl">€</span>
-                    <input type="number" id="pago_actual" name="pago_actual" class="input-custom pl-12 w-full border border-gray-200 rounded-xl p-4 text-2xl text-center focus:outline-none transition-shadow" placeholder="0.00">
+                    <span
+                        class="absolute inset-y-0 left-0 pl-6 flex items-center text-gray-400 font-medium text-2xl">€</span>
+                    <input type="number" id="pago_actual" name="pago_actual"
+                        class="input-custom pl-12 w-full border border-gray-200 rounded-xl p-4 text-2xl text-center focus:outline-none transition-shadow"
+                        placeholder="0.00">
                 </div>
             </div>
 
             <!-- STEP 4: Última revisión -->
             <div id="step-4" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Cuándo fue la última vez que un asesor revisó y actualizó sus coberturas?</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Cuándo fue
+                    la última vez que un asesor revisó y actualizó sus coberturas?</h2>
                 <div class="space-y-4 max-w-sm mx-auto">
                     <label class="radio-card block cursor-pointer">
                         <input type="radio" name="ultima_revision" value="Menos_1_ano" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">Hace menos de 1 año</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Hace menos de 1 año</div>
                     </label>
                     <label class="radio-card block cursor-pointer">
                         <input type="radio" name="ultima_revision" value="1_a_3_anos" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">Entre 1 y 3 años</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Entre 1 y 3 años</div>
                     </label>
                     <label class="radio-card block cursor-pointer">
                         <input type="radio" name="ultima_revision" value="Mas_3_anos" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">Más de 3 años o nunca</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-center text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Más de 3 años o nunca</div>
                     </label>
                 </div>
             </div>
 
             <!-- STEP 5: Propuesta a medida -->
             <div id="step-5" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Te interesa que te hagamos una propuesta hecha a la medida para ti?</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Te interesa
+                    que te hagamos una propuesta hecha a la medida para ti?</h2>
                 <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="radio" name="propuesta_medida" value="Si" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">Sí</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">
+                            Sí</div>
                     </label>
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="radio" name="propuesta_medida" value="No" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">No</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-6 text-gray-700 hover:border-blue-300 transition-all text-xl font-medium">
+                            No</div>
                     </label>
                 </div>
             </div>
 
             <!-- STEP 6: Tipo de seguros -->
             <div id="step-6" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-2 text-gray-900 text-center leading-tight">¿En qué tipo de seguros estás interesado revisar?</h2>
-                <p class="text-blue-500 font-medium text-center text-sm mb-8 tracking-wide uppercase">Puedes seleccionar varios</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-2 text-gray-900 text-center leading-tight">¿En qué tipo
+                    de seguros estás interesado revisar?</h2>
+                <p class="text-blue-500 font-medium text-center text-sm mb-8 tracking-wide uppercase">Puedes seleccionar
+                    varios</p>
                 <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="checkbox" name="tipo_seguro" value="Decesos" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">Decesos</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Decesos</div>
                     </label>
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="checkbox" name="tipo_seguro" value="Hogar" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">Hogar</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Hogar</div>
                     </label>
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="checkbox" name="tipo_seguro" value="Vida" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">Vida</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Vida</div>
                     </label>
                     <label class="radio-card block cursor-pointer text-center">
                         <input type="checkbox" name="tipo_seguro" value="Mascotas" class="hidden">
-                        <div class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">Mascotas</div>
+                        <div
+                            class="border border-gray-200 rounded-xl p-5 text-gray-700 hover:border-blue-300 transition-all text-lg">
+                            Mascotas</div>
                     </label>
                 </div>
             </div>
 
             <!-- STEP DNI HOGAR: Solicitar DNI -->
             <div id="step-hogar-dni" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-3 text-gray-900 text-center leading-tight">Necesitamos su DNI</h2>
-                <p class="text-gray-500 text-center mb-2 text-base leading-relaxed max-w-sm mx-auto">Solo lo utilizamos para acceder a los datos del Catastro y poder aplicarle la tarifa correcta a su hogar.</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-3 text-gray-900 text-center leading-tight">Necesitamos
+                    su DNI</h2>
+                <p class="text-gray-500 text-center mb-2 text-base leading-relaxed max-w-sm mx-auto">Solo lo utilizamos
+                    para acceder a los datos del Catastro y poder aplicarle la tarifa correcta a su hogar.</p>
                 <div class="flex items-center justify-center gap-2 mb-8">
-                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    <span class="text-blue-500 text-xs font-medium">Sus datos están protegidos y no serán compartidos</span>
+                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                    <span class="text-blue-500 text-xs font-medium">Sus datos están protegidos y no serán
+                        compartidos</span>
                 </div>
                 <div class="mb-5 max-w-xs mx-auto">
-                    <input type="text" id="dni" name="dni" class="input-custom w-full border border-gray-200 rounded-xl p-4 text-xl text-center focus:outline-none tracking-widest uppercase" placeholder="Ej: 12345678A" maxlength="9">
+                    <input type="text" id="dni" name="dni"
+                        class="input-custom w-full border border-gray-200 rounded-xl p-4 text-xl text-center focus:outline-none tracking-widest uppercase"
+                        placeholder="Ej: 12345678A" maxlength="9">
                 </div>
             </div>
 
             <!-- STEP 7: Grupo Familiar (Decesos) -->
             <div id="step-7" class="step hidden-step">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Cuántas personas constituyen su grupo familiar?</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900 text-center leading-tight">¿Cuántas
+                    personas constituyen su grupo familiar?</h2>
                 <div class="mb-5 max-w-sm mx-auto">
-                    <select id="habitantes" name="habitantes" class="input-custom w-full border border-gray-200 rounded-xl p-4 text-lg focus:outline-none appearance-none cursor-pointer bg-white">
+                    <select id="habitantes" name="habitantes"
+                        class="input-custom w-full border border-gray-200 rounded-xl p-4 text-lg focus:outline-none appearance-none cursor-pointer bg-white">
                         <option value="" disabled selected>Seleccione el número...</option>
                         <option value="1">1 persona (Solo yo)</option>
                         <option value="2">2 personas</option>
@@ -173,22 +238,32 @@
             <!-- STEP 8: Datos Personales -->
             <div id="step-8" class="step hidden-step">
                 <div class="text-center mb-8">
-                    <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3">Último Paso</span>
+                    <span
+                        class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-widest mb-3">Último
+                        Paso</span>
                     <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 leading-tight">¡Casi listo!</h2>
                     <p class="text-gray-500 mt-2">Déjanos tus datos para enviarte la información.</p>
                 </div>
                 <div class="space-y-4 max-w-sm mx-auto">
                     <div>
                         <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1 ml-1">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none" placeholder="Tu nombre">
+                        <input type="text" id="nombre" name="nombre"
+                            class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none"
+                            placeholder="Tu nombre">
                     </div>
                     <div>
-                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1 ml-1">Número de teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none" placeholder="Ej: 600 123 456">
+                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1 ml-1">Número de
+                            teléfono</label>
+                        <input type="tel" id="telefono" name="telefono"
+                            class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none"
+                            placeholder="Ej: 600 123 456">
                     </div>
                     <div>
-                        <label for="direccion" class="block text-sm font-medium text-gray-700 mb-1 ml-1">Dirección completa</label>
-                        <input type="text" id="direccion" name="direccion" class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none" placeholder="Ej: Calle Mayor 10, 2ºA">
+                        <label for="direccion" class="block text-sm font-medium text-gray-700 mb-1 ml-1">Dirección
+                            completa</label>
+                        <input type="text" id="direccion" name="direccion"
+                            class="input-custom w-full border border-gray-200 rounded-xl p-3.5 focus:outline-none"
+                            placeholder="Ej: Calle Mayor 10, 2ºA">
                     </div>
                 </div>
             </div>
@@ -200,46 +275,73 @@
 
             <!-- Controles de Navegación -->
             <div class="flex items-center justify-between mt-10 max-w-sm mx-auto">
-                <button type="button" id="btn-back" class="hidden p-3 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <button type="button" id="btn-back"
+                    class="hidden p-3 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
                 </button>
-                <button type="button" id="btn-next" class="btn-primary ml-auto px-8 py-3 text-base font-semibold text-white rounded-full focus:outline-none shadow-lg flex items-center">
+                <button type="button" id="btn-next"
+                    class="btn-primary ml-auto px-8 py-3 text-base font-semibold text-white rounded-full focus:outline-none shadow-lg flex items-center">
                     <span>Siguiente</span>
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </button>
-                <button type="button" id="btn-submit" class="hidden btn-primary ml-auto px-8 py-3 text-base font-semibold text-white rounded-full flex items-center justify-center focus:outline-none shadow-lg">
+                <button type="button" id="btn-submit"
+                    class="hidden btn-primary ml-auto px-8 py-3 text-base font-semibold text-white rounded-full flex items-center justify-center focus:outline-none shadow-lg">
                     <span>Finalizar</span>
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </button>
             </div>
-            
-            <p id="enter-hint" class="text-center text-xs text-gray-400 mt-4 font-medium tracking-wide">PULSA ENTER ↵</p>
+
+            <p id="enter-hint" class="text-center text-xs text-gray-400 mt-4 font-medium tracking-wide">PULSA ENTER ↵
+            </p>
         </form>
 
         <!-- Pantalla de Éxito: Resultado Positivo (asesor contacta) -->
         <div id="success-screen" class="hidden-step text-center py-12">
             <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-100 mb-8 shadow-inner">
-                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
             </div>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">¡Todo listo!</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-sm mx-auto">Su información ha sido enviada. Un asesor local analizará su caso y se pondrá en contacto pronto.</p>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-sm mx-auto">Su información ha sido enviada. Un asesor
+                local analizará su caso y se pondrá en contacto pronto.</p>
         </div>
 
         <!-- Pantalla de Éxito: Sin Interés (Occident dice No) -->
         <div id="success-screen-no-interest" class="hidden-step text-center py-12">
             <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 mb-8 shadow-inner">
-                <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                    </path>
+                </svg>
             </div>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">¡Todo listo!</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-sm mx-auto">Si necesitas más información, <strong>llámanos</strong> y estaremos encantados de ayudarte.</p>
-            <a href="tel:604179144" class="inline-flex items-center gap-2 mt-6 px-6 py-4 bg-blue-600 text-white font-bold text-xl rounded-2xl shadow-lg hover:bg-blue-700 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-sm mx-auto">Si necesitas más información,
+                <strong>llámanos</strong> y estaremos encantados de ayudarte.
+            </p>
+            <a href="tel:604179144"
+                class="inline-flex items-center gap-2 mt-6 px-6 py-4 bg-blue-600 text-white font-bold text-xl rounded-2xl shadow-lg hover:bg-blue-700 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                    </path>
+                </svg>
                 604 179 144
             </a>
         </div>
 
         <!-- Overlay de Carga -->
-        <div id="loading-overlay" class="absolute inset-0 bg-white/80 backdrop-blur-md flex flex-col justify-center items-center hidden z-50">
+        <div id="loading-overlay"
+            class="absolute inset-0 bg-white/80 backdrop-blur-md flex flex-col justify-center items-center hidden z-50">
             <div class="animate-spin rounded-full h-14 w-14 border-t-2 border-b-2 border-blue-600 mb-4"></div>
             <p class="text-gray-800 font-semibold text-lg animate-pulse">Enviando información...</p>
         </div>
@@ -254,8 +356,8 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        const N8N_WEBHOOK_URL = ""; 
-        
+        const N8N_WEBHOOK_URL = "";
+
         // Identificadores de pasos
         const STEPS = {
             COMPANY: 'step-1',
@@ -272,8 +374,8 @@
         };
 
         let currentStepId = STEPS.COMPANY;
-        let historyStack = []; 
-        
+        let historyStack = [];
+
         // Referencias del DOM
         const form = document.getElementById('insurance-form');
         const selectHabitantes = document.getElementById('habitantes');
@@ -340,7 +442,7 @@
                 return;
             }
             errorMsg.classList.add('hidden');
-            
+
             let nextStepId;
 
             switch (currentStepId) {
@@ -409,7 +511,7 @@
                 case STEPS.FAMILY:
                     nextStepId = STEPS.PERSONAL_DATA;
                     break;
-                
+
                 // Occident branch
                 case STEPS.OCCIDENT_OFFER:
                     const quiereLlamada = document.querySelector('input[name="llamar_occident"]:checked').value;
@@ -455,7 +557,7 @@
         // Soporte para ENTER en los inputs
         form.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault(); 
+                e.preventDefault();
                 const isFinalStep = (currentStepId === STEPS.PERSONAL_DATA || currentStepId === STEPS.OCCIDENT_PHONE);
                 if (!isFinalStep) {
                     goToNextStep();
@@ -471,7 +573,7 @@
                 containerEdades.innerHTML = '';
                 const num = parseInt(e.target.value);
                 if (num > 1) {
-                    const extras = num >= 5 ? 4 : num - 1; 
+                    const extras = num >= 5 ? 4 : num - 1;
                     for (let i = 1; i <= extras; i++) {
                         const extraLabel = (num >= 5 && i === 4) ? `Edad familiar ${i} (y sig.)` : `Edad familiar ${i}`;
                         const html = `
@@ -492,7 +594,7 @@
                 el.classList.add('hidden-step');
                 el.classList.remove('step-enter');
             });
-            
+
             // Mostrar paso actual
             const activeStep = document.getElementById(currentStepId);
             activeStep.classList.remove('hidden-step');
@@ -500,7 +602,7 @@
 
             // Auto-focus en el primer input del paso
             const firstInput = activeStep.querySelector('input');
-            if(firstInput && firstInput.type !== 'radio' && firstInput.type !== 'checkbox') {
+            if (firstInput && firstInput.type !== 'radio' && firstInput.type !== 'checkbox') {
                 setTimeout(() => firstInput.focus(), 50);
             }
 
@@ -563,9 +665,9 @@
                 return validEdades;
             }
             if (stepId === STEPS.PERSONAL_DATA) {
-                return document.getElementById('nombre').value.trim() && 
-                       document.getElementById('telefono').value.trim() && 
-                       document.getElementById('direccion').value.trim();
+                return document.getElementById('nombre').value.trim() &&
+                    document.getElementById('telefono').value.trim() &&
+                    document.getElementById('direccion').value.trim();
             }
             if (stepId === STEPS.OCCIDENT_OFFER) {
                 return !!document.querySelector('input[name="llamar_occident"]:checked');
@@ -578,7 +680,7 @@
 
         btnSubmit.addEventListener('click', async (e) => {
             e.preventDefault();
-            
+
             if (!validateStep(currentStepId)) {
                 showError();
                 return;
@@ -587,7 +689,7 @@
             // Recopilación de datos
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
-            
+
             // Si pasaron por tipo_seguro, estructurar array
             if (data.tipo_seguro) {
                 const segurosSeleccionados = [];
@@ -595,7 +697,7 @@
                     segurosSeleccionados.push(input.value);
                 });
                 data.tipos_seguro_interes = segurosSeleccionados;
-                delete data.tipo_seguro; 
+                delete data.tipo_seguro;
             }
 
             // Datos de convivientes si pasó por el paso 7
@@ -619,7 +721,7 @@
                 } else {
                     console.log("=== DATOS A ENVIAR A N8N ===");
                     console.log(JSON.stringify(data, null, 2));
-                    await new Promise(r => setTimeout(r, 1500)); 
+                    await new Promise(r => setTimeout(r, 1500));
                 }
 
                 form.classList.add('hidden-step');
@@ -632,7 +734,7 @@
                     successScreen.classList.remove('hidden-step');
                     successScreen.classList.add('step-enter');
                 }
-                
+
             } catch (error) {
                 console.error('Error:', error);
                 alert('Hubo un error al enviar los datos. Por favor, inténtelo de nuevo.');
@@ -645,4 +747,5 @@
         updateUI();
     </script>
 </body>
+
 </html>
