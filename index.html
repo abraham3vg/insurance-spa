@@ -359,7 +359,7 @@
         // =====================================================
         // CONFIGURACIÓN — solo edita esta sección
         // =====================================================
-        const N8N_WEBHOOK_URL = "/api/webhook-proxy";
+        const N8N_WEBHOOK_URL = "https://abrahamoccident.app.n8n.cloud/webhook/12ffaa1f-17f1-4e10-ad02-6e057981664d";
 
         // =====================================================
 
@@ -763,7 +763,9 @@
             try {
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify(data)
                 });
 
