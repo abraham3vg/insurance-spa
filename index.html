@@ -356,9 +356,13 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        const N8N_WEBHOOK_URL = "";
+        // =====================================================
+        // CONFIGURACIÓN — solo edita esta sección
+        // =====================================================
+        const N8N_WEBHOOK_URL = "https://abrahamoccident.app.n8n.cloud/webhook/12ffaa1f-17f1-4e10-ad02-6e057981664d";
 
-        // Identificadores de pasos
+        // =====================================================
+
         const STEPS = {
             COMPANY: 'step-1',
             AGE: 'step-2',
@@ -376,7 +380,6 @@
         let currentStepId = STEPS.COMPANY;
         let historyStack = [];
 
-        // Referencias del DOM
         const form = document.getElementById('insurance-form');
         const selectHabitantes = document.getElementById('habitantes');
         const containerEdades = document.getElementById('edades_convivientes');
@@ -388,10 +391,9 @@
         const enterHint = document.getElementById('enter-hint');
         const successScreen = document.getElementById('success-screen');
         const successScreenNoInterest = document.getElementById('success-screen-no-interest');
-        let isNoInterestOutcome = false; // Flag para saber qué pantalla final mostrar
+        let isNoInterestOutcome = false;
         const loadingOverlay = document.getElementById('loading-overlay');
 
-        // Checkboxes del paso 1
         const noSeguro = document.getElementById('no_seguro');
         const soyOccident = document.getElementById('soy_occident');
         const inputCompania = document.getElementById('compania_actual');
@@ -427,7 +429,6 @@
             }
         });
 
-        // Mostrar error con animación
         function showError() {
             errorMsg.classList.remove('hidden');
             form.style.transform = 'translateX(5px)';
@@ -435,7 +436,6 @@
             setTimeout(() => form.style.transform = 'translateX(0)', 200);
         }
 
-        // Navegación principal (Ruter de estado)
         function goToNextStep() {
             if (!validateStep(currentStepId)) {
                 showError();
@@ -511,15 +511,13 @@
                 case STEPS.FAMILY:
                     nextStepId = STEPS.PERSONAL_DATA;
                     break;
-
-                // Occident branch
                 case STEPS.OCCIDENT_OFFER:
                     const quiereLlamada = document.querySelector('input[name="llamar_occident"]:checked').value;
                     if (quiereLlamada === 'Si') {
                         nextStepId = STEPS.OCCIDENT_PHONE;
                     } else {
-                        isNoInterestOutcome = true; // Marcar como resultado sin interés
-                        btnSubmit.click(); // Enviar y mostrar pantalla neutra
+                        isNoInterestOutcome = true;
+                        btnSubmit.click();
                         return;
                     }
                     break;
@@ -542,32 +540,20 @@
         btnNext.addEventListener('click', goToNextStep);
         btnBack.addEventListener('click', goToPrevStep);
 
-        // Ocultar mensaje de error al escribir/seleccionar
-        form.addEventListener('input', () => {
-            errorMsg.classList.add('hidden');
-        });
+        form.addEventListener('input', () => { errorMsg.classList.add('hidden'); });
 
-        // Ocultar mensaje de error al seleccionar una opción de radio
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                errorMsg.classList.add('hidden');
-            });
+            radio.addEventListener('change', () => { errorMsg.classList.add('hidden'); });
         });
 
-        // Soporte para ENTER en los inputs
         form.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 const isFinalStep = (currentStepId === STEPS.PERSONAL_DATA || currentStepId === STEPS.OCCIDENT_PHONE);
-                if (!isFinalStep) {
-                    goToNextStep();
-                } else {
-                    btnSubmit.click();
-                }
+                if (!isFinalStep) { goToNextStep(); } else { btnSubmit.click(); }
             }
         });
 
-        // Generar dinámicamente inputs de edades para grupo familiar
         if (selectHabitantes && containerEdades) {
             selectHabitantes.addEventListener('change', (e) => {
                 containerEdades.innerHTML = '';
@@ -589,24 +575,20 @@
         }
 
         function updateUI() {
-            // Ocultar todos los pasos
             document.querySelectorAll('.step').forEach(el => {
                 el.classList.add('hidden-step');
                 el.classList.remove('step-enter');
             });
 
-            // Mostrar paso actual
             const activeStep = document.getElementById(currentStepId);
             activeStep.classList.remove('hidden-step');
             activeStep.classList.add('step-enter');
 
-            // Auto-focus en el primer input del paso
             const firstInput = activeStep.querySelector('input');
             if (firstInput && firstInput.type !== 'radio' && firstInput.type !== 'checkbox') {
                 setTimeout(() => firstInput.focus(), 50);
             }
 
-            // Actualizar barra de progreso
             let progress = 0;
             if (soyOccident.checked) {
                 if (currentStepId === STEPS.COMPANY) progress = 33;
@@ -617,7 +599,6 @@
             }
             progressBar.style.width = `${progress}%`;
 
-            // Configurar botones
             if (historyStack.length === 0) {
                 btnBack.classList.add('hidden');
             } else {
@@ -625,8 +606,8 @@
             }
 
             const isFinalStep = (currentStepId === STEPS.PERSONAL_DATA || currentStepId === STEPS.OCCIDENT_PHONE);
-
             const hasRadios = activeStep.querySelector('input[type="radio"]');
+
             if (hasRadios || isFinalStep) {
                 enterHint.classList.add('opacity-0');
             } else {
@@ -669,13 +650,78 @@
                     document.getElementById('telefono').value.trim() &&
                     document.getElementById('direccion').value.trim();
             }
-            if (stepId === STEPS.OCCIDENT_OFFER) {
-                return !!document.querySelector('input[name="llamar_occident"]:checked');
-            }
-            if (stepId === STEPS.OCCIDENT_PHONE) {
-                return !!document.getElementById('telefono_occident').value.trim();
-            }
+            if (stepId === STEPS.OCCIDENT_OFFER) return !!document.querySelector('input[name="llamar_occident"]:checked');
+            if (stepId === STEPS.OCCIDENT_PHONE) return !!document.getElementById('telefono_occident').value.trim();
             return true;
+        }
+
+        // =====================================================
+        // Construcción del mensaje para WhatsApp
+        // =====================================================
+        function buildWhatsAppMessage(data) {
+            const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' });
+            let msg = '';
+
+            // Rama Occident
+            if (data.estado_seguro === 'soy_occident') {
+                msg += `🔵 *LEAD OCCIDENT* — Cliente actual\n`;
+                msg += `📅 ${fecha}\n`;
+                msg += `─────────────────────\n`;
+                msg += `👤 *Teléfono:* ${data.telefono_occident || '-'}\n`;
+                msg += `📞 *Quiere que le llamen:* ${data.llamar_occident || '-'}\n`;
+                msg += `─────────────────────\n`;
+                msg += `💡 _Cliente ya en Occident. Ofrecer descuentos en pólizas adicionales._`;
+                return msg;
+            }
+
+            // Rama Sin Interés
+            if (data.propuesta_medida === 'No') {
+                msg += `⚪ *LEAD SIN INTERÉS*\n`;
+                msg += `📅 ${fecha}\n`;
+                msg += `─────────────────────\n`;
+                msg += `🏢 *Compañía actual:* ${data.compania_actual || 'Sin seguro'}\n`;
+                msg += `🎂 *Edad:* ${data.edad || '-'} años\n`;
+                msg += `💡 _Rechazó propuesta a medida._`;
+                return msg;
+            }
+
+            // Rama Principal (lead con interés)
+            const seguros = Array.isArray(data.tipos_seguro_interes)
+                ? data.tipos_seguro_interes.join(', ')
+                : (data.tipos_seguro_interes || '-');
+
+            const revision = {
+                'Menos_1_ano': 'Hace menos de 1 año',
+                '1_a_3_anos': 'Entre 1 y 3 años',
+                'Mas_3_anos': 'Más de 3 años / nunca'
+            }[data.ultima_revision] || data.ultima_revision || '-';
+
+            msg += `🟢 *NUEVO LEAD — OCCIDENT*\n`;
+            msg += `📅 ${fecha}\n`;
+            msg += `─────────────────────\n`;
+            msg += `👤 *Nombre:* ${data.nombre || '-'}\n`;
+            msg += `📞 *Teléfono:* ${data.telefono || '-'}\n`;
+            msg += `🏠 *Dirección:* ${data.direccion || '-'}\n`;
+            msg += `─────────────────────\n`;
+            msg += `🏢 *Compañía actual:* ${data.compania_actual || (data.estado_seguro === 'no_tengo' ? 'Sin seguro' : '-')}\n`;
+            msg += `🎂 *Edad:* ${data.edad || '-'} años\n`;
+            if (data.pago_actual) msg += `💶 *Pago actual:* ${data.pago_actual}€\n`;
+            msg += `🔍 *Última revisión:* ${revision}\n`;
+            msg += `📋 *Seguros de interés:* ${seguros}\n`;
+
+            if (data.dni) msg += `🪪 *DNI:* ${data.dni}\n`;
+
+            if (data.habitantes) {
+                msg += `👨‍👩‍👧 *Grupo familiar:* ${data.habitantes} persona(s)\n`;
+                if (data.edades_convivientes && data.edades_convivientes.length > 0) {
+                    msg += `👥 *Edades convivientes:* ${data.edades_convivientes.join(', ')} años\n`;
+                }
+            }
+
+            msg += `─────────────────────\n`;
+            msg += `✅ _Lead con alta intención de compra. Contactar pronto._`;
+
+            return msg;
         }
 
         btnSubmit.addEventListener('click', async (e) => {
@@ -686,12 +732,11 @@
                 return;
             }
 
-            // Recopilación de datos
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
 
-            // Si pasaron por tipo_seguro, estructurar array
-            if (data.tipo_seguro) {
+            // Estructurar array de tipos de seguro
+            if (document.querySelectorAll('input[name="tipo_seguro"]:checked').length > 0) {
                 const segurosSeleccionados = [];
                 document.querySelectorAll('input[name="tipo_seguro"]:checked').forEach(input => {
                     segurosSeleccionados.push(input.value);
@@ -700,7 +745,7 @@
                 delete data.tipo_seguro;
             }
 
-            // Datos de convivientes si pasó por el paso 7
+            // Edades convivientes
             const edadesInputs = document.querySelectorAll('.edad-conviviente');
             if (edadesInputs.length > 0) {
                 const edadesConvivientes = [];
@@ -708,21 +753,21 @@
                 data.edades_convivientes = edadesConvivientes;
             }
 
+            // Añadir flag de resultado y mensaje formateado para WhatsApp
+            data.resultado = isNoInterestOutcome ? 'sin_interes' : 'con_interes';
+            data.whatsapp_mensaje = buildWhatsAppMessage(data);
+            data.fecha_envio = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' });
+
             loadingOverlay.classList.remove('hidden');
 
             try {
-                if (N8N_WEBHOOK_URL.trim() !== "") {
-                    const response = await fetch(N8N_WEBHOOK_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                    if (!response.ok) throw new Error('Error en la respuesta de red');
-                } else {
-                    console.log("=== DATOS A ENVIAR A N8N ===");
-                    console.log(JSON.stringify(data, null, 2));
-                    await new Promise(r => setTimeout(r, 1500));
-                }
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
 
                 form.classList.add('hidden-step');
                 progressBar.parentElement.classList.add('hidden');
@@ -736,14 +781,13 @@
                 }
 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error al enviar:', error);
                 alert('Hubo un error al enviar los datos. Por favor, inténtelo de nuevo.');
             } finally {
                 loadingOverlay.classList.add('hidden');
             }
         });
 
-        // Initialize UI
         updateUI();
     </script>
 </body>
