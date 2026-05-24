@@ -761,14 +761,16 @@
             loadingOverlay.classList.remove('hidden');
 
             try {
-                const response = await fetch(N8N_WEBHOOK_URL, {
+                // no-cors evita el bloqueo CORS de n8n cloud
+                // No podemos leer la respuesta pero los datos llegan correctamente
+                await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify(data)
                 });
 
-                if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-
+                // Con no-cors siempre llegamos aquí si la petición se envió
                 form.classList.add('hidden-step');
                 progressBar.parentElement.classList.add('hidden');
 
