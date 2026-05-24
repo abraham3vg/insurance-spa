@@ -359,7 +359,7 @@
         // =====================================================
         // CONFIGURACIÓN — solo edita esta sección
         // =====================================================
-        const N8N_WEBHOOK_URL = "https://abrahamoccident.app.n8n.cloud/webhook/12ffaa1f-17f1-4e10-ad02-6e057981664d";
+        const N8N_WEBHOOK_URL = "/api/webhook-proxy";
 
         // =====================================================
 
@@ -761,16 +761,13 @@
             loadingOverlay.classList.remove('hidden');
 
             try {
-                // no-cors evita el bloqueo CORS de n8n cloud
-                // No podemos leer la respuesta pero los datos llegan correctamente
-                await fetch(N8N_WEBHOOK_URL, {
+                const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
-                // Con no-cors siempre llegamos aquí si la petición se envió
+                if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
                 form.classList.add('hidden-step');
                 progressBar.parentElement.classList.add('hidden');
 
